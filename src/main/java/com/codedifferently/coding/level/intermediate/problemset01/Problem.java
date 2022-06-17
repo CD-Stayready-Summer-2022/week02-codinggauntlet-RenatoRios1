@@ -56,26 +56,18 @@ public class Problem {
     subTwo("xaxxaxaxx") --> 1
     sub2("axxxaaxx") --> 2
      */
-
+    //this was supposed to find xx's
     public static Integer subTwo(String str) {
         HashMap<String, Integer> subStrings = new HashMap<>();
-        int max = 0;
-        for(int i = 0 ; i < str.length() -1; i++){
-//            if(i+1 == str.length()-1){
-//                break;
-//            }
-            String tempStr = str.substring(i,i+2);
-            System.out.println(tempStr);
-            if(!subStrings.containsKey(tempStr)){
+        for(int i = 0 ; i < (str.length()-1)-1; i++) { //Ignoring last 2 letters so subtract -2 from total str.len
+            String tempStr = str.substring(i, i + 2);
+            if (!subStrings.containsKey(tempStr)) {
                 subStrings.put(tempStr, 1);
-            }else{
+            } else {
                 subStrings.put(tempStr, subStrings.get(tempStr) + 1);
-                if(subStrings.get(tempStr) > max){
-                    max = subStrings.get(tempStr);
-                }
             }
         }
-        return max-1;
+        return subStrings.get("xx");
     }
 
 
@@ -123,8 +115,20 @@ public class Problem {
      */
 
     public static String scrambleOfLetters(String scramble) {
+        int[] arr = {0,1,4,5,8,9};
+        String output = "";
+        int index = 0;
+        for(int i = 0; i < scramble.length(); i++) {
+            if (arr[index] == i) {
+                output += scramble.charAt(arr[index]);
+                index++;
+                if(index == arr.length){
+                    break;
+                }
 
-        return null;
+            }
+        }
+        return output;
     }
 
 
@@ -141,7 +145,11 @@ public class Problem {
      */
 
     public static Boolean dontAcceptTriples(int[] score) {
-
-        return null;
+        for(int i = 0; i < (score.length-1) -2; i++){ //subtracting 2 from limit to avoid going over
+            if(score[i] == score[i+1] && score[i] == score[i+2]){
+                return false;
+            }
+        }
+        return true;
     }
 }

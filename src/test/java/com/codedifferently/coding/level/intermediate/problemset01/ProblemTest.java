@@ -99,10 +99,8 @@ public class ProblemTest {
     // Problem 03
     @Test
     public void subTwoTest01() {
-
         // Given
         String str = "hixxhi";
-
         // When
         Integer expected = 1;
         Integer actual = Problem.subTwo(str);

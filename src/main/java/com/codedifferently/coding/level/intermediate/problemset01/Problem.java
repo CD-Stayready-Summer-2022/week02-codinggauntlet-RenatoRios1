@@ -1,9 +1,11 @@
 package com.codedifferently.coding.level.intermediate.problemset01;
 
+import java.util.HashMap;
+
 public class Problem {
 
     /* Problem 01
-       We need you to make ___ amount of copies of a given string.
+       We need you to make __≠≠_ amount of copies of a given string.
        A string will be given and a non-negative number.
        We need you to make the given number of copies of the original string.
 
@@ -16,8 +18,11 @@ public class Problem {
      */
 
     public static String stringCopies(String word, int n) {
-
-        return null;
+        String tempStr = word;
+        for(int i = 1; i < n; i ++){
+            word += tempStr;
+        }
+        return word;
     }
 
 
@@ -32,10 +37,13 @@ public class Problem {
      */
 
     public static Boolean followedX(String str) {
-
-        return null;
+        for(int i = 0; i < str.length()-1; i++){
+            if(str.charAt(i) == 'x' && str.charAt(i+1) == 'x'){
+               return true;
+            }
+        }
+        return false;
     }
-
 
     /* Problem 03
     Provided a given string, take note of how many times you see a substring length 2 occur.
@@ -50,8 +58,24 @@ public class Problem {
      */
 
     public static Integer subTwo(String str) {
-
-        return null;
+        HashMap<String, Integer> subStrings = new HashMap<>();
+        int max = 0;
+        for(int i = 0 ; i < str.length() -1; i++){
+//            if(i+1 == str.length()-1){
+//                break;
+//            }
+            String tempStr = str.substring(i,i+2);
+            System.out.println(tempStr);
+            if(!subStrings.containsKey(tempStr)){
+                subStrings.put(tempStr, 1);
+            }else{
+                subStrings.put(tempStr, subStrings.get(tempStr) + 1);
+                if(subStrings.get(tempStr) > max){
+                    max = subStrings.get(tempStr);
+                }
+            }
+        }
+        return max-1;
     }
 
 
@@ -70,8 +94,17 @@ public class Problem {
      */
 
     public static Boolean basicNumbers123(int[] nums) {
+        for(int i = 0; i < nums.length -1 ;i++){
+            if(nums[i] == 1){
+                if(!(i+1 > nums.length+1) && nums[i+1] == 2){
+                    if(!(i+2 > nums.length+1) && nums[i+2] == 3){
+                        return true;
+                    }
+                }
 
-        return null;
+            }
+        }
+        return false;
     }
 
 
